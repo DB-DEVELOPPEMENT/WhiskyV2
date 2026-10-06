@@ -1,0 +1,14 @@
+/*--------------Utils-----------------*/
+@import './Utils/Normalizer.css';
+@import './Utils/Variables.css';
+
+/*--------------Template-----------------*/
+@import './Template/Template.css';
+
+/*--------------Layout-----------------*/
+@import './Layout/Header.css';
+/*--------------Pages-----------------*/
+
+/*--------------Components-----------------*/
+@import './Components/Card.css';
+@import './Components/Dropdown.css';
