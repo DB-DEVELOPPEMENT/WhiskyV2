@@ -2,12 +2,12 @@
 import { NavLink } from "react-router-dom";
 import { useSlider } from '@/Context/SliderContext';
 
-import logoClassique from '@/Assets/Images/logo-classique.png';
-import logoTourbe from '@/Assets/Images/logo-tourbe.png';
-import logoSherry from '@/Assets/Images/logo-sherry.png';
-import logoSherryb from '@/Assets/Images/logo-sherry.png';
+import logo_Macallan from '@/Assets/Images/logo_Macallan.jpg';
+import logo_Yamazki from '@/Assets/Images/logo_Yamazaki.jpg';
+import logo_Dalmore from '@/Assets/Images/logo_Dalmore.jpg';
+import logo_Bowmore from '@/Assets/Images/logo_Bowmore.jpg';
 
-const logos = [logoClassique, logoTourbe, logoSherry, logoSherryb];
+const logos = [logo_Macallan, logo_Yamazki, logo_Dalmore, logo_Bowmore];
 
 const SOCIAL = ["Facebook", "Instagram", "Twitter"];
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from "react";
 
 // 1. On crée la "boîte" (vide pour l'instant)
