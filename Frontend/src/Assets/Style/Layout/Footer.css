@@ -46,9 +46,37 @@
     outline-offset: 4px;
 }
 
+/* Accueil : bandeau fixé en bas de l'écran, sur toute la largeur.
+   Le dégradé sombre le détache de la brume et des images. */
+.footer--fixe {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    max-width: none;
+    padding: 22px max(var(--page-gutter), calc((100% - var(--page-max)) / 2 + var(--page-gutter))) 10px;
+    background: linear-gradient(to top, rgba(13, 11, 8, 0.92) 40%, transparent);
+}
+
+/* Place réservée sous le slider pour que le bandeau fixe ne cache rien */
+.layout:has(.footer--fixe) .layout__main {
+    padding-bottom: 44px;
+}
+
 @media (max-width: 760px) {
     .footer {
         flex-direction: column;
         text-align: center;
+    }
+
+    .footer--fixe {
+        gap: 2px;
+        padding-top: 18px;
+        font-size: 0.56rem;
+    }
+
+    .layout:has(.footer--fixe) .layout__main {
+        padding-bottom: 64px;
     }
 }

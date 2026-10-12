@@ -2,6 +2,11 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Layout from '@/Layout/Layout';
 import Accueil from '@/Pages/Public/Accueil';
+import Produits from '@/Pages/Public/Produits';
+import ProduitDetail from '@/Pages/Public/ProduitDetail';
+import Histoire from '@/Pages/Public/Histoire';
+import Procedures from '@/Pages/Public/Procedures';
+import Introuvable from '@/Pages/Public/Introuvable';
 
 const PublicRouter = () => {
     return (
@@ -12,6 +17,12 @@ const PublicRouter = () => {
                     L'ancienne adresse /Accueil redirige vers la racine. */}
                 <Route index element={<Accueil />} />
                 <Route path="/Accueil" element={<Navigate to="/" replace />} />
+                <Route path="/produits" element={<Produits />} />
+                <Route path="/produits/:slug" element={<ProduitDetail />} />
+                <Route path="/histoire" element={<Histoire />} />
+                <Route path="/process" element={<Procedures />} />
+                {/* Toute autre adresse : page 404 */}
+                <Route path="*" element={<Introuvable />} />
             </Route>
 
             

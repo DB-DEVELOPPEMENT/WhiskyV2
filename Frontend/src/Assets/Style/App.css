@@ -10,6 +10,7 @@
 @import './Layout/Header.css';
 @import './Layout/Footer.css';
 /*--------------Pages-----------------*/
+@import './Pages/Pages.css';
 
 /*--------------Components-----------------*/
 @import './Components/Card.css';

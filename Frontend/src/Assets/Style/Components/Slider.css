@@ -85,6 +85,26 @@
     opacity: 0.85;
 }
 
+/* Lien vers la fiche produit, souligné d'un filet doré */
+.whisky-info__lien {
+    display: inline-block;
+    margin-top: 24px;
+    padding-bottom: 6px;
+    font-family: var(--font-ui);
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--whisky-gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201, 164, 92, 0.5);
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.whisky-info__lien:hover {
+    color: var(--whisky-title);
+    border-bottom-color: var(--whisky-gold);
+}
+
 /*---------- Bouteille (SlideBottle) ----------*/
 .whisky-product {
     grid-area: bottle;

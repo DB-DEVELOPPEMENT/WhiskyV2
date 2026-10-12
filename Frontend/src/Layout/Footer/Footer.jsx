@@ -2,11 +2,13 @@
 // En attendant, il pointe vers le profil GitHub.
 const PORTFOLIO_URL = 'https://github.com/DB-DEVELOPPEMENT';
 
-const Footer = () => {
+// fixe = true sur l'accueil : le footer reste collé en bas de l'écran,
+// pour que le crédit soit visible même sur un petit écran sans faire défiler.
+const Footer = ({ fixe = false }) => {
     const annee = new Date().getFullYear();
 
     return (
-        <footer className="footer">
+        <footer className={fixe ? "footer footer--fixe" : "footer"}>
             {/* Mention obligatoire en France pour un site sur l'alcool (loi Évin) */}
             <p className="footer__mention">
                 L'abus d'alcool est dangereux pour la santé, à consommer avec modération.

@@ -19,7 +19,7 @@ const Header = () => {
                         to="/produits"
                         className={({ isActive }) => isActive ? "header__link header__link--active" : "header__link"}
                     >
-                        Nos Produits TEST
+                        Nos Produits
                     </NavLink>
                     <NavLink to="/histoire">
                         {({ isActive }) => (
@@ -28,7 +28,7 @@ const Header = () => {
                     </NavLink>
                     <NavLink to="/process">
                         {({ isActive }) => (
-                            <span className={isActive ? "active" : ""}>Notre Procédure</span>
+                            <span className={isActive ? "active" : ""}>Nos Procédures</span>
                         )}
                     </NavLink>
                 </div>

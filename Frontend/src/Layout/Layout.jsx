@@ -14,7 +14,7 @@
 //                 <main>
 //                     <Outlet />
 //                 </main>
-//                 <Footer />
+//                 <Footer fixe={estPageAccueil} />
 //             </div>
 //         </SliderProvider>
 
@@ -24,6 +24,7 @@
 // export default Layout;
 
 // ici je démarre ma V2
+import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { SliderProvider, useSlider } from '@/Context/SliderContext';
 import Header from '@/Layout/Header/Header';
@@ -34,6 +35,11 @@ import Fond from '@/Layout/Fond/Fond';
 function LayoutContent() {
   const { activeSlide } = useSlider();
   const { pathname } = useLocation();
+
+  // À chaque changement de page, on remonte en haut
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   // Le décor ne s'applique qu'à l'Accueil, pas aux futures pages.
   const chemin = pathname.replace(/\/+$/, '').toLowerCase();
@@ -46,7 +52,7 @@ function LayoutContent() {
       <main className="layout__main">
         <Outlet />
       </main>
-      <Footer />
+      <Footer fixe={estPageAccueil} />
     </div>
   );
 }

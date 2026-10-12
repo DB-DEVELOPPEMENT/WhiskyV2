@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Liste des pages à indexer. Ajouter une <url> par nouvelle page (histoire, process…). -->
+<!-- Liste des pages du site. Ajouter une <url> par nouvelle page. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://db-developpement.github.io/WhiskyV2/</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://db-developpement.github.io/WhiskyV2/produits</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://db-developpement.github.io/WhiskyV2/produits/togouchi-9-ans</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://db-developpement.github.io/WhiskyV2/produits/yamazaki-25-ans</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://db-developpement.github.io/WhiskyV2/produits/dalmore-king-alexander-iii</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://db-developpement.github.io/WhiskyV2/produits/bowmore-25-ans</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://db-developpement.github.io/WhiskyV2/histoire</loc>
+    <lastmod>2026-10-12</lastmod>
+  </url>
+  <url>
+    <loc>https://db-developpement.github.io/WhiskyV2/process</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
 </urlset>

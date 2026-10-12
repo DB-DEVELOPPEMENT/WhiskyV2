@@ -1,0 +1,825 @@
+/*-------------- Pages intérieures -----------------*/
+/* Même direction artistique que l'accueil :
+   noir chaud, doré, titres gravés (Cinzel), textes Cormorant, petites capitales Lato. */
+
+.page {
+    position: relative;
+    width: 100%;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 40px var(--page-gutter) 96px;
+}
+
+/* Halo doré très discret en haut des pages, rappel de la lumière des chais */
+.layout:not(:has(.fond)) {
+    background:
+        radial-gradient(ellipse 70% 45% at 50% 0%, rgba(201, 164, 92, 0.1), transparent 70%),
+        var(--whisky-noir);
+}
+
+.page--centree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/*---------- En-tête de page (PageHero) ----------*/
+.page-hero {
+    max-width: 760px;
+    margin-bottom: 64px;
+}
+
+.page--centree .page-hero {
+    margin-inline: auto;
+}
+
+.page-hero__surtitre,
+.section-titre__surtitre {
+    margin-bottom: 18px;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--whisky-gold);
+}
+
+.page-hero__titre {
+    font-family: var(--font-titre);
+    font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+}
+
+.page-hero__ligne {
+    width: 48px;
+    height: 1px;
+    margin: 26px 0;
+    background: var(--whisky-gold);
+}
+
+.page--centree .page-hero__ligne {
+    margin-inline: auto;
+}
+
+.page-hero__intro {
+    max-width: 52ch;
+    font-size: 1.2rem;
+    color: var(--whisky-text);
+    opacity: 0.85;
+}
+
+/*---------- Titres de section ----------*/
+.section-titre {
+    margin-bottom: 28px;
+}
+
+.section-titre__surtitre {
+    margin-bottom: 10px;
+}
+
+.section-titre__titre {
+    font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+}
+
+/*---------- Sections et textes ----------*/
+.page-section {
+    padding: 56px 0;
+    /* pointillés dorés entre les sections, comme sous le slider */
+    border-top: 2px dotted rgba(201, 164, 92, 0.45);
+}
+
+.page-colonnes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 56px;
+}
+
+.page-colonnes--decalees {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+}
+
+.page-texte {
+    max-width: 58ch;
+    margin-bottom: 18px;
+    font-size: 1.15rem;
+    color: var(--whisky-text);
+    opacity: 0.85;
+}
+
+.page-texte em {
+    color: var(--whisky-gold);
+}
+
+.page-texte--centre {
+    margin-inline: auto;
+    text-align: center;
+}
+
+/*---------- Bouton doré ----------*/
+.bouton {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 14px 28px;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--whisky-gold);
+    text-decoration: none;
+    border: 1px solid var(--whisky-gold);
+    transition: background-color var(--transition), color var(--transition);
+}
+
+.bouton:hover {
+    background: var(--whisky-gold);
+    color: var(--whisky-noir);
+}
+
+.bouton:focus-visible,
+.filtre:focus-visible,
+.carte-produit__lien:focus-visible,
+.fil-ariane a:focus-visible,
+.whisky-info__lien:focus-visible {
+    outline: 2px solid var(--whisky-gold);
+    outline-offset: 4px;
+}
+
+/* Petite étiquette de note aromatique */
+.note {
+    display: inline-block;
+    padding: 5px 12px;
+    font-family: var(--font-ui);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+    border: 1px solid var(--whisky-border);
+    border-radius: 20px;
+}
+
+/*============== Nos produits ==============*/
+.filtres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filtre {
+    padding: 9px 20px;
+    font-family: var(--font-ui);
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+    background: transparent;
+    border: 1px solid var(--whisky-border);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.filtre:hover,
+.filtre--actif {
+    color: var(--whisky-gold);
+    border-color: var(--whisky-gold);
+}
+
+.grille-produits {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.carte-produit__lien {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 28px 22px 26px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--whisky-border);
+    transition: border-color var(--transition), transform var(--transition);
+}
+
+.carte-produit__lien:hover {
+    border-color: rgba(201, 164, 92, 0.6);
+    transform: translateY(-6px);
+}
+
+/* Halo doré derrière la bouteille, comme la vignette active du slider */
+.carte-produit__visuel {
+    width: 100%;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 18px;
+    background: radial-gradient(circle at 50% 60%, var(--whisky-gold-glow), transparent 62%);
+}
+
+/* hauteur fixe en px : toutes les bouteilles tiennent dans la même zone */
+.carte-produit__visuel img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 240px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 26px rgba(0, 0, 0, 0.7));
+    transition: transform var(--transition);
+}
+
+.carte-produit__lien:hover .carte-produit__visuel img {
+    transform: scale(1.04);
+}
+
+.carte-produit__origine {
+    font-family: var(--font-ui);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--whisky-gold);
+}
+
+.carte-produit__nom {
+    font-family: var(--font-titre);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+}
+
+.carte-produit__edition {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--whisky-muted);
+}
+
+.carte-produit__infos {
+    margin-top: 4px;
+    font-family: var(--font-ui);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+.carte-produit__notes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 14px 0 18px;
+}
+
+.carte-produit__cta {
+    margin-top: auto;
+    font-family: var(--font-ui);
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--whisky-gold);
+}
+
+/*============== Fiche produit ==============*/
+.fil-ariane {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+    font-family: var(--font-ui);
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+.fil-ariane a {
+    color: var(--whisky-muted);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.fil-ariane a:hover,
+.fil-ariane [aria-current] {
+    color: var(--whisky-gold);
+}
+
+.produit__hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
+    padding-bottom: 64px;
+}
+
+.produit__visuel {
+    display: grid;
+    place-items: center;
+    min-height: 520px;
+    background: radial-gradient(circle at 50% 55%, var(--whisky-gold-glow), transparent 60%);
+}
+
+.produit__visuel img {
+    max-height: min(68vh, 600px);
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.7));
+}
+
+.produit__nom {
+    font-family: var(--font-titre);
+    font-size: clamp(2.6rem, 5.5vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+}
+
+.produit__edition {
+    margin-top: 10px;
+    font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+.produit__description,
+.produit__texte {
+    max-width: 46ch;
+    font-size: 1.15rem;
+    color: var(--whisky-text);
+    opacity: 0.85;
+}
+
+/* Puissance : libellé + jauge + degré */
+.produit__puissance {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0 22px;
+    padding: 16px 0;
+    border-block: 1px solid var(--whisky-border);
+}
+
+.produit__puissance-label {
+    font-family: var(--font-ui);
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+.produit__puissance-degre {
+    margin-left: auto;
+    font-family: var(--font-titre);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--whisky-gold);
+}
+
+.produit__notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Jauge à 5 segments */
+.jauge {
+    display: inline-flex;
+    gap: 5px;
+}
+
+.jauge__segment {
+    width: 26px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.jauge__segment--plein {
+    background: var(--whisky-gold);
+    box-shadow: 0 0 8px var(--whisky-gold-glow);
+}
+
+.produit__section {
+    padding: 56px 0;
+    border-top: 2px dotted rgba(201, 164, 92, 0.45);
+}
+
+.produit__colonnes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 56px;
+}
+
+/* Nez / Bouche / Finale */
+.degustation {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.degustation__etape {
+    padding: 28px 26px;
+    border: 1px solid var(--whisky-border);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.degustation__chiffre {
+    display: block;
+    margin-bottom: 14px;
+    font-family: var(--font-titre);
+    font-size: 0.9rem;
+    color: var(--whisky-gold);
+}
+
+.degustation__titre {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+}
+
+.degustation__etape p {
+    font-size: 1.1rem;
+    color: var(--whisky-text);
+    opacity: 0.85;
+}
+
+/* Profil aromatique */
+.profil {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+}
+
+.profil__ligne {
+    display: grid;
+    grid-template-columns: 110px auto;
+    align-items: center;
+}
+
+.profil__label {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+.profil__valeur {
+    margin: 0;
+}
+
+.produit__precision {
+    margin-top: 22px;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--whisky-muted);
+}
+
+/* Fiche technique */
+.fiche {
+    margin: 0;
+}
+
+.fiche__ligne {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--whisky-border);
+}
+
+.fiche__ligne dt {
+    font-family: var(--font-ui);
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+    padding-top: 4px;
+}
+
+.fiche__ligne dd {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--whisky-text);
+}
+
+/* Anecdote : citation avec filet doré, comme les rails */
+.anecdote {
+    margin: 28px 0 0;
+    padding-left: 22px;
+    border-left: 1px solid var(--whisky-gold);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--whisky-muted);
+}
+
+.accords {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.accords li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.2rem;
+    color: var(--whisky-text);
+}
+
+/* petit losange doré devant chaque accord */
+.accords li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    background: var(--whisky-gold);
+    transform: rotate(45deg);
+}
+
+/* Précédent / collection / suivant : reprend le style des coins du slider */
+.produit__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding-top: 28px;
+    border-top: 2px dotted rgba(201, 164, 92, 0.6);
+}
+
+.produit__navigation .bouton {
+    margin-top: 0;
+}
+
+/*============== Notre histoire ==============*/
+.frise {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Filet doré vertical qui relie les dates */
+.frise::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 110px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(201, 164, 92, 0.7) 10%, rgba(201, 164, 92, 0.7) 90%, transparent);
+}
+
+.frise__etape {
+    position: relative;
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 48px;
+    padding: 22px 0;
+}
+
+/* Losange doré posé sur le filet */
+.frise__etape::before {
+    content: "";
+    position: absolute;
+    top: 34px;
+    left: 106px;
+    width: 9px;
+    height: 9px;
+    background: var(--whisky-noir);
+    border: 1px solid var(--whisky-gold);
+    transform: rotate(45deg);
+}
+
+.frise__annee {
+    font-family: var(--font-titre);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--whisky-gold);
+}
+
+.frise__titre {
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+}
+
+.frise__lieu {
+    margin: 6px 0 10px;
+    font-family: var(--font-ui);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+.frise__texte {
+    max-width: 62ch;
+    font-size: 1.12rem;
+    color: var(--whisky-text);
+    opacity: 0.85;
+}
+
+.page-citation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.citation {
+    max-width: 24ch;
+    margin: 0 0 24px;
+    font-family: var(--font-texte);
+    font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--whisky-title);
+}
+
+/*============== Nos procédures ==============*/
+.etapes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.etape {
+    position: relative;
+    padding: 30px 26px 28px;
+    border: 1px solid var(--whisky-border);
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color var(--transition);
+}
+
+.etape:hover {
+    border-color: rgba(201, 164, 92, 0.5);
+}
+
+/* Grand chiffre romain en filigrane */
+.etape__numero {
+    position: absolute;
+    top: 14px;
+    right: 22px;
+    font-family: var(--font-titre);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: rgba(201, 164, 92, 0.18);
+}
+
+.etape__titre {
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+}
+
+.etape__chiffre {
+    margin: 8px 0 16px;
+    font-family: var(--font-ui);
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--whisky-gold);
+}
+
+.etape__texte {
+    font-size: 1.08rem;
+    color: var(--whisky-text);
+    opacity: 0.85;
+}
+
+.gestes {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.geste {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--whisky-border);
+}
+
+.geste__numero {
+    font-family: var(--font-titre);
+    font-size: 1.3rem;
+    color: var(--whisky-gold);
+}
+
+.geste__titre {
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+}
+
+.geste__texte {
+    font-size: 1.08rem;
+    color: var(--whisky-text);
+    opacity: 0.85;
+}
+
+/*============== Responsive ==============*/
+@media (max-width: 1100px) {
+    .grille-produits {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .etapes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .page {
+        padding-top: 24px;
+        padding-bottom: 64px;
+    }
+
+    .page-hero {
+        margin-bottom: 40px;
+    }
+
+    .grille-produits,
+    .etapes,
+    .degustation,
+    .page-colonnes,
+    .page-colonnes--decalees,
+    .produit__colonnes,
+    .produit__hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    .produit__visuel {
+        min-height: 360px;
+    }
+
+    .produit__visuel img {
+        max-height: 420px;
+    }
+
+    .frise::before {
+        left: 4px;
+    }
+
+    .frise__etape {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 6px;
+        padding-left: 30px;
+    }
+
+    .frise__etape::before {
+        left: 0;
+        top: 30px;
+    }
+
+    .produit__navigation {
+        flex-wrap: wrap;
+    }
+
+    .produit__navigation .bouton {
+        order: 3;
+        width: 100%;
+        text-align: center;
+    }
+}
