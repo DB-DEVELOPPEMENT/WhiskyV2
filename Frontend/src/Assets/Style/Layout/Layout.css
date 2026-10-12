@@ -1,0 +1,168 @@
+/*-------------- Layout -----------------*/
+
+/* Le layout entoure Header + main + Footer :
+   il fait au moins la hauteur de l'écran, même si la page a peu de contenu. */
+.layout {
+    position: relative;
+    isolation: isolate; /* le calque de fond (z-index: -1) reste dans le layout */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* navigateurs anciens */
+    min-height: 100dvh; /* tient compte des barres du navigateur sur mobile */
+    background-color: var(--whisky-noir); /* visible pendant le chargement de l'image */
+}
+
+.layout__main {
+    flex: 1; /* pousse le Footer en bas de l'écran */
+    display: flex;
+    flex-direction: column; /* le slider peut s'étirer sur toute la hauteur */
+}
+
+/*---------- Fond animé de l'accueil (Fond.jsx) ----------*/
+
+/* Conteneur fixé à l'écran, derrière tout le contenu */
+.fond {
+    position: fixed;
+    inset: 0; /* top, right, bottom, left à 0 → tout l'écran */
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none; /* ne bloque jamais un clic */
+}
+
+/* Les 4 images empilées : invisibles par défaut */
+.fond__image {
+    position: absolute;
+    inset: 0;
+    background-image:
+        /* voile sombre en haut pour garder le Header lisible */
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, var(--fond-voile-haut, 0.2)),
+            transparent 45%
+        ),
+        var(--fond-image);
+    background-size: cover; /* remplit l'écran sans déformer l'image */
+    background-position: var(--fond-position, center top);
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.06);
+    /* fondu en 1,2 s, et léger zoom arrière très lent */
+    transition:
+        opacity 1.2s ease-in-out,
+        transform 8s ease-out;
+    will-change: opacity, transform;
+}
+
+/* L'image active apparaît et se "pose" doucement */
+.fond__image--active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Calque noir par-dessus les images : règle --fond-calque dans Variables.css */
+.fond__calque {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--fond-calque, 0.45));
+}
+
+/* Calque noir sur les côtés : opaque au bord, transparent vers le centre.
+   Réglages dans Variables.css : --fond-cotes (opacité) et --fond-cotes-largeur */
+.fond__cotes {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, var(--fond-cotes, 0.7)) 0%,
+        transparent var(--fond-cotes-largeur, 40%),
+        transparent calc(100% - var(--fond-cotes-largeur, 40%)),
+        rgba(0, 0, 0, var(--fond-cotes, 0.7)) 100%
+    );
+}
+
+/* Nuages en bas de l'écran : conteneur qui s'efface vers le haut */
+.fond__nuages {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40vh;
+    min-height: 220px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to top, #000 55%, transparent);
+    mask-image: linear-gradient(to top, #000 55%, transparent);
+}
+
+/* Une couche de nuages : 2 fois la largeur de l'écran, motif répété 2 fois.
+   On la décale de -50% en boucle → raccord invisible, défilement infini. */
+.fond__nuage {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat-x;
+    background-size: 50% 100%;
+    filter: blur(10px);
+    animation: fond-nuages 120s linear infinite;
+    will-change: transform;
+}
+
+/* Couche du fond : petits nuages hauts, très transparents, lents */
+.fond__nuage--loin {
+    background-image:
+        radial-gradient(ellipse 14% 22% at 18% 62%, rgba(255, 255, 255, 0.28), transparent 70%),
+        radial-gradient(ellipse 12% 18% at 47% 55%, rgba(255, 255, 255, 0.22), transparent 70%),
+        radial-gradient(ellipse 15% 24% at 78% 60%, rgba(255, 255, 255, 0.28), transparent 70%);
+    animation-duration: 160s;
+}
+
+/* Couche du milieu */
+.fond__nuage--milieu {
+    background-image:
+        radial-gradient(ellipse 16% 30% at 22% 82%, rgba(255, 255, 255, 0.38), transparent 70%),
+        radial-gradient(ellipse 13% 26% at 40% 76%, rgba(255, 255, 255, 0.34), transparent 70%),
+        radial-gradient(ellipse 18% 32% at 70% 84%, rgba(255, 255, 255, 0.38), transparent 70%);
+    filter: blur(14px);
+    animation-duration: 100s;
+    animation-delay: -30s;
+}
+
+/* Couche de devant : gros nuages bas, plus visibles, plus rapides,
+   plus une nappe de brume continue tout en bas */
+.fond__nuage--proche {
+    background-image:
+        radial-gradient(ellipse 20% 40% at 15% 100%, rgba(255, 255, 255, 0.5), transparent 70%),
+        radial-gradient(ellipse 16% 34% at 50% 96%, rgba(255, 255, 255, 0.42), transparent 70%),
+        radial-gradient(ellipse 22% 42% at 82% 100%, rgba(255, 255, 255, 0.5), transparent 70%),
+        linear-gradient(to top, rgba(255, 255, 255, 0.24), transparent 40%);
+    filter: blur(18px);
+    animation-duration: 65s;
+    animation-delay: -12s;
+}
+
+@keyframes fond-nuages {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@media (max-width: 760px) {
+    .fond__image {
+        background-position: var(--fond-position-mobile, center top);
+    }
+}
+
+/* Sans animation pour les personnes qui l'ont désactivée dans leur système */
+@media (prefers-reduced-motion: reduce) {
+    .fond__nuage {
+        animation: none;
+    }
+
+    .fond__image {
+        transform: none;
+    }
+}

@@ -1,1 +1,29 @@
 /*-------------- Variables -----------------*/
+
+:root {
+    /* Couleurs */
+    --whisky-noir: #0d0b08;
+    --whisky-text: #e6e1d8;
+    --whisky-title: #d8d4cc;
+    --whisky-muted: #9b968d;
+    --whisky-gold: #c9a45c;
+    --whisky-gold-glow: rgba(201, 164, 92, 0.35);
+    --whisky-border: rgba(255, 255, 255, 0.08);
+    --whisky-paper: #f1ece3; /* cadre clair pour les images non détourées */
+    --fond-calque: 0.45;     /* opacité du calque noir sur les fonds (0 = aucun, 1 = noir total) */
+    --fond-cotes: 0.35;      /* opacité du noir sur les bords gauche et droit */
+    --fond-cotes-largeur: 40%; /* jusqu'où le noir s'étend vers le centre */
+    --rail-calque: 0.55;     /* opacité du fond sombre des colonnes de rails (bords) */
+    --rail-largeur: 56px;    /* largeur des colonnes de rails */
+    --rail-liseret: 0.7;      /* opacité du filet doré qui ferme chaque colonne */
+
+    /* Polices (chargées dans index.html) */
+    --font-titre: 'Cinzel', 'Times New Roman', serif;
+    --font-texte: 'Cormorant Garamond', Georgia, serif;
+    --font-ui: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+
+    /* Mise en page */
+    --page-max: 1440px;
+    --page-gutter: 5%;
+    --transition: 0.35s ease;
+}

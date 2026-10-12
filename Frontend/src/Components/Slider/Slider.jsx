@@ -3,6 +3,8 @@ import { whiskies } from '@/Data/whiskies';
 import SlideInfo from './SlideInfo';
 import SlideBottle from './SlideBottle';
 import SliderThumbs from './SliderThumbs';
+import SliderRails from './SliderRails';
+import SliderFooter from './SliderFooter';
 
 export default function Slider() {
   // Le contexte fournit la sélection commune avec le Header.
@@ -30,13 +32,6 @@ export default function Slider() {
       }}
     >
       <div className="whisky-slider__inner">
-        <div className="whisky-slider__topline">
-          <span>La collection</span>
-          <span>
-            {String(activeSlide + 1).padStart(2, '0')} / {String(whiskies.length).padStart(2, '0')}
-          </span>
-        </div>
-
         {/* On conserve ce conteneur et ses boutons au changement de sélection.
             Une clé changeante les recréerait et pourrait faire perdre le focus. */}
         <div className="whisky-slider__content">
@@ -48,7 +43,6 @@ export default function Slider() {
           <div className="whisky-slider__controls">
             <button type="button" onClick={afficherPrecedent}
               aria-label="Afficher le whisky précédent">←</button>
-            <span>Choisir une maison</span>
             <button type="button" onClick={afficherSuivant}
               aria-label="Afficher le whisky suivant">→</button>
           </div>
@@ -58,6 +52,9 @@ export default function Slider() {
             onSelect={setActiveSlide}
           />
         </div>
+
+        <SliderRails whisky={whisky} />
+        <SliderFooter whisky={whisky} />
 
         <p className="whisky-sr-only" role="status">
           Sélection : {whisky.nom}, {whisky.edition}

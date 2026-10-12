@@ -33,7 +33,11 @@ const Header = () => {
                     </NavLink>
                 </div>
                 <div className="header__2">
-                    <img src={whisky.logo} alt={whisky.nom} />
+                    <img
+                        className={whisky.logoDetoure ? "header__logo header__logo--detoure" : "header__logo"}
+                        src={whisky.logo}
+                        alt={whisky.nom}
+                    />
                 </div>
                 <div className="header__3">
                    <nav className="header__nav">

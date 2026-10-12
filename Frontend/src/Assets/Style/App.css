@@ -6,9 +6,11 @@
 @import './Template/Template.css';
 
 /*--------------Layout-----------------*/
+@import './Layout/Layout.css';
 @import './Layout/Header.css';
 /*--------------Pages-----------------*/
 
 /*--------------Components-----------------*/
 @import './Components/Card.css';
 @import './Components/Dropdown.css';
+@import './Components/Slider.css';

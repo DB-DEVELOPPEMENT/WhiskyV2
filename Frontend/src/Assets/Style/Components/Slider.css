@@ -1,0 +1,463 @@
+/*-------------- Slider -----------------*/
+
+/* Le slider remplit toute la hauteur laissée par le Header */
+.whisky-slider {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--page-gutter) 32px;
+}
+
+/* Grille de la maquette :
+   texte à gauche, bouteille à droite,
+   vignettes en bas à gauche, liens en bas de chaque côté.
+   Les textes verticaux sont hors grille, collés aux bords de l'écran. */
+.whisky-slider__inner {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas:
+        "info      bottle"
+        "selection bottle"
+        "foot      foot";
+    column-gap: 40px;
+}
+
+/* "display: contents" efface ce conteneur de la grille :
+   SlideInfo et SlideBottle deviennent directement des cases de la grille. */
+.whisky-slider__content {
+    display: contents;
+}
+
+/*---------- Textes (SlideInfo) ----------*/
+.whisky-info {
+    grid-area: info;
+    align-self: center;
+    padding-left: 6%;
+    max-width: 560px;
+}
+
+.whisky-info__eyebrow {
+    margin-bottom: 18px;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--whisky-gold);
+}
+
+.whisky-info__title {
+    font-family: var(--font-titre);
+    font-size: clamp(2.75rem, 6vw, 5.5rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+}
+
+.whisky-info__edition {
+    margin-top: 10px;
+    font-family: var(--font-texte);
+    font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+.whisky-info__line {
+    width: 48px;
+    height: 1px;
+    margin: 26px 0;
+    background: var(--whisky-gold);
+}
+
+.whisky-info__description {
+    max-width: 40ch;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--whisky-text);
+    opacity: 0.85;
+}
+
+/*---------- Bouteille (SlideBottle) ----------*/
+.whisky-product {
+    grid-area: bottle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.whisky-product__button {
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transition: transform var(--transition);
+}
+
+.whisky-product__button:hover {
+    transform: translateY(-6px);
+}
+
+.whisky-product__visual {
+    display: block;
+}
+
+.whisky-product__image {
+    width: auto;
+    max-height: min(64vh, 620px);
+    /* ombre portée qui suit la forme d'une image détourée */
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.7));
+}
+
+/* Image NON détourée (fond blanc) : on la présente dans un cadre clair.
+   "multiply" fond le blanc de la photo dans la couleur du cadre. */
+.whisky-product__visual--paper {
+    padding: 18px;
+    background: var(--whisky-paper);
+    border-radius: 3px;
+    box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.65),
+        0 0 60px var(--whisky-gold-glow);
+}
+
+.whisky-product__visual--paper .whisky-product__image {
+    max-height: min(56vh, 540px);
+    mix-blend-mode: multiply;
+    filter: none;
+}
+
+.whisky-product__caption {
+    font-family: var(--font-ui);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+/*---------- Sélection : flèches + vignettes ----------*/
+.whisky-slider__selection {
+    grid-area: selection;
+    align-self: end;
+    padding-left: 6%;
+}
+
+.whisky-slider__controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+    font-family: var(--font-ui);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+.whisky-slider__controls button {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--whisky-border);
+    border-radius: 50%;
+    color: var(--whisky-muted);
+    cursor: pointer;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.whisky-slider__controls button:hover {
+    color: var(--whisky-gold);
+    border-color: var(--whisky-gold);
+}
+
+.whisky-thumbs {
+    display: flex;
+    gap: 34px;
+    margin: 0;
+    padding: 0 0 18px;
+    list-style: none;
+}
+
+.whisky-thumb {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: var(--whisky-muted);
+    opacity: 0.55;
+    cursor: pointer;
+    transition: opacity var(--transition), color var(--transition);
+}
+
+.whisky-thumb:hover {
+    opacity: 0.85;
+}
+
+/* Halo doré derrière la vignette active */
+.whisky-thumb::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    z-index: -1;
+    width: 110px;
+    height: 110px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, var(--whisky-gold-glow), transparent 65%);
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+/* Petit chevron sous la vignette active */
+.whisky-thumb::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-top: 4px;
+    border-top: 1px solid var(--whisky-gold);
+    border-left: 1px solid var(--whisky-gold);
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.whisky-thumb--active {
+    opacity: 1;
+    color: var(--whisky-text);
+}
+
+.whisky-thumb--active::before,
+.whisky-thumb--active::after {
+    opacity: 1;
+}
+
+.whisky-thumb__picture {
+    display: block;
+    height: 66px;
+    margin-bottom: 4px;
+}
+
+.whisky-thumb__picture img {
+    width: auto;
+    height: 100%;
+}
+
+/* Vignette non détourée : mini cadre clair */
+.whisky-thumb__picture--paper {
+    padding: 3px;
+    background: var(--whisky-paper);
+    border-radius: 2px;
+}
+
+.whisky-thumb__picture--paper img {
+    mix-blend-mode: multiply;
+}
+
+.whisky-thumb__name {
+    font-family: var(--font-titre);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.whisky-thumb__edition {
+    font-family: var(--font-texte);
+    font-size: 0.8rem;
+    font-style: italic;
+    line-height: 1.1;
+}
+
+/*---------- Textes verticaux (SliderRails) ----------*/
+/* "absolute" se place par rapport au premier parent positionné : .layout,
+   qui fait toute la largeur de l'écran. Les textes collent donc aux bords du site. */
+.whisky-rail {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whisky-rail--left {
+    left: 0;
+}
+
+.whisky-rail--right {
+    right: 0;
+}
+
+/* Colonne de chaque rail, sur toute la hauteur :
+   - ::before : fond sombre de la colonne
+   - ::after  : filet doré fin qui la ferme côté contenu,
+                il s'estompe en haut et en bas
+   z-index: -1 → sous le texte du rail et sous le contenu,
+   mais au-dessus de l'image de fond. Réglages dans Variables.css */
+.whisky-rail::before,
+.whisky-rail::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.whisky-rail::before {
+    width: var(--rail-largeur, 56px);
+    background: rgba(0, 0, 0, var(--rail-calque, 0.55));
+}
+
+.whisky-rail::after {
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(201, 164, 92, var(--rail-liseret, 0.7)) 20%,
+        rgba(201, 164, 92, var(--rail-liseret, 0.7)) 80%,
+        transparent 100%
+    );
+}
+
+.whisky-rail--left::before { left: 0; }
+.whisky-rail--left::after { left: var(--rail-largeur, 56px); }
+
+.whisky-rail--right::before { right: 0; }
+.whisky-rail--right::after { right: var(--rail-largeur, 56px); }
+
+/* writing-mode écrit le texte de haut en bas,
+   la rotation de 180° le fait se lire de bas en haut comme sur la maquette */
+.whisky-rail__text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    font-family: var(--font-ui);
+    font-size: 0.62rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--whisky-muted);
+}
+
+/* petit trait doré avant le texte de gauche */
+.whisky-rail--left .whisky-rail__text::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 32px;
+    margin-bottom: 14px;
+    background: var(--whisky-gold);
+}
+
+.whisky-rail__text strong {
+    font-family: var(--font-titre);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--whisky-title);
+}
+
+/*---------- Bas du slider (SliderFooter) ----------*/
+.whisky-slider__footer {
+    grid-area: foot;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    padding-top: 20px;
+    /* bande de pointillés dorés au-dessus des liens */
+    border-top: 2px dotted rgba(201, 164, 92, 0.6);
+}
+
+.whisky-corner {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.whisky-corner--right {
+    text-align: right;
+}
+
+.whisky-corner__title {
+    font-family: var(--font-titre);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--whisky-title);
+    transition: color var(--transition);
+}
+
+.whisky-corner__link {
+    font-family: var(--font-texte);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--whisky-muted);
+}
+
+.whisky-corner:hover .whisky-corner__title {
+    color: var(--whisky-gold);
+}
+
+/*---------- Tablette et mobile ----------*/
+@media (max-width: 900px) {
+    .whisky-slider__inner {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "info"
+            "bottle"
+            "selection"
+            "foot";
+        row-gap: 32px;
+    }
+
+    /* pas de place pour les textes verticaux sur petit écran */
+    .whisky-rail {
+        display: none;
+    }
+
+    .whisky-info,
+    .whisky-slider__selection {
+        padding-left: 0;
+    }
+
+    .whisky-product__image {
+        max-height: 48vh;
+    }
+
+    .whisky-product__visual--paper .whisky-product__image {
+        max-height: 42vh;
+    }
+
+    /* Les vignettes défilent à l'horizontale si elles dépassent */
+    .whisky-thumbs {
+        gap: 24px;
+        padding-top: 10px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    .whisky-thumbs li {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+    }
+}
