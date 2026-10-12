@@ -6,8 +6,9 @@ import AdminRouter from '@/Router/AdminRouter';
 
 const App = () => {
    
+    // basename = le "base" de vite.config.js ('/' en local, '/WhiskyV2/' sur GitHub Pages)
     return (
-            <BrowserRouter>
+            <BrowserRouter basename={import.meta.env.BASE_URL}>
                 <Routes>
                     <Route path="/*" element={<PublicRouter />} />
                     <Route path="/auth/*" element={<AuthRouter />} />
