@@ -7,8 +7,11 @@ const PublicRouter = () => {
     return (
         <Routes>
             <Route element={<Layout />}>
-                <Route path="" element={<Navigate to="/Accueil" />} />
-                <Route path="/Accueil" element={<Accueil />} />
+                {/* L'accueil est servi directement à la racine du site :
+                    GitHub Pages renvoie un vrai code 200 sur cette adresse (bon pour le référencement).
+                    L'ancienne adresse /Accueil redirige vers la racine. */}
+                <Route index element={<Accueil />} />
+                <Route path="/Accueil" element={<Navigate to="/" replace />} />
             </Route>
 
             

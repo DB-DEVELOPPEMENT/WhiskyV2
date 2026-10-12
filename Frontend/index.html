@@ -2,9 +2,63 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Application Whisky</title>
+
+    <!-- Référencement : titre (~60 caractères) et description (~155) affichés dans Google -->
+    <title>Whiskies d'exception · Togouchi, Yamazaki, Dalmore, Bowmore</title>
+    <meta
+      name="description"
+      content="Découvrez une sélection de whiskies d'exception du Japon et d'Écosse : Togouchi 9 ans, Yamazaki 25 ans, Dalmore King Alexander III et Bowmore 25 ans."
+    />
+    <meta name="author" content="Benjamin Durrieu" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <!-- Adresse officielle de la page (évite les doublons /Accueil, /index.html…) -->
+    <link rel="canonical" href="https://db-developpement.github.io/WhiskyV2/" />
+
+    <!-- Icônes -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0d0b08" />
+
+    <!-- Aperçu lors d'un partage (Facebook, LinkedIn, WhatsApp, Discord…) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Whiskies d'exception" />
+    <meta property="og:title" content="Whiskies d'exception · Japon & Écosse" />
+    <meta
+      property="og:description"
+      content="Togouchi, Yamazaki, Dalmore, Bowmore : une sélection de whiskies japonais et écossais d'exception."
+    />
+    <meta property="og:url" content="https://db-developpement.github.io/WhiskyV2/" />
+    <meta property="og:image" content="https://db-developpement.github.io/WhiskyV2/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Page d'accueil : le whisky Togouchi 9 ans devant un chai de fûts" />
+    <!-- Même aperçu sur X (Twitter) -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Données structurées : décrivent le site et son auteur aux moteurs de recherche -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Whiskies d'exception",
+        "url": "https://db-developpement.github.io/WhiskyV2/",
+        "inLanguage": "fr-FR",
+        "description": "Sélection de whiskies d'exception du Japon et d'Écosse : Togouchi, Yamazaki, Dalmore et Bowmore.",
+        "author": {
+          "@type": "Person",
+          "name": "Benjamin Durrieu",
+          "givenName": "Benjamin",
+          "familyName": "Durrieu",
+          "jobTitle": "Développeur web",
+          "url": "https://github.com/DB-DEVELOPPEMENT"
+        }
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,6 +68,15 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Contenu de secours si JavaScript est désactivé (lu aussi par certains robots) -->
+    <noscript>
+      <h1>Whiskies d'exception</h1>
+      <p>
+        Une sélection de whiskies du Japon et d'Écosse : Togouchi 9 ans, Yamazaki 25 ans,
+        Dalmore King Alexander III et Bowmore 25 ans. Activez JavaScript pour découvrir le site.
+      </p>
+      <p>L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

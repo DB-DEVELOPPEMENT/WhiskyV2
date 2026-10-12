@@ -1,0 +1,54 @@
+/*-------------- Footer -----------------*/
+
+/* Bandeau discret en bas de page : mention légale à gauche, crédit à droite */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 24px;
+    width: 100%;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 14px var(--page-gutter) 18px;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--whisky-text);
+    /* ombre sombre : le texte reste lisible même sur la brume des nuages */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.8);
+}
+
+.footer__mention {
+    opacity: 0.85;
+}
+
+/* Le nom : la future porte d'entrée vers le portfolio */
+.footer__auteur {
+    font-family: var(--font-titre);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--whisky-gold);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.footer__auteur:hover {
+    color: var(--whisky-title);
+    border-bottom-color: var(--whisky-gold);
+}
+
+.footer__auteur:focus-visible {
+    outline: 2px solid var(--whisky-gold);
+    outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}

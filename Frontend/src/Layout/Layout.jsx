@@ -37,7 +37,7 @@ function LayoutContent() {
 
   // Le décor ne s'applique qu'à l'Accueil, pas aux futures pages.
   const chemin = pathname.replace(/\/+$/, '').toLowerCase();
-  const estPageAccueil = chemin === '/accueil';
+  const estPageAccueil = chemin === '' || chemin === '/accueil';
 
   return (
     <div className="layout">
