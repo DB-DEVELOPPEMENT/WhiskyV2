@@ -2,18 +2,7 @@
 import { NavLink } from "react-router-dom";
 import { useSlider } from '@/Context/SliderContext';
 
-import logo_Macallan from '@/Assets/Images/logo_Macallan.jpg';
-import logo_Yamazki from '@/Assets/Images/logo_Yamazaki.jpg';
-import logo_Dalmore from '@/Assets/Images/logo_Dalmore.jpg';
-import logo_Bowmore from '@/Assets/Images/logo_Bowmore.jpg';
-
-const whiskies = [
-    { logo: logo_Macallan, nom: "Macallan" },
-    { logo: logo_Yamazki, nom: "Yamazaki" },
-    { logo: logo_Dalmore, nom: "Dalmore" },
-    { logo: logo_Bowmore, nom: "Bowmore" },
-];
-
+import { whiskies } from '@/Data/whiskies';
 const SOCIAL = ["Facebook", "Instagram", "Twitter"];
 
 
