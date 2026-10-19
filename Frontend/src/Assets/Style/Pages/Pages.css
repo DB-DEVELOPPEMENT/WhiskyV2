@@ -602,9 +602,29 @@
 .frise__etape {
     position: relative;
     display: grid;
-    grid-template-columns: 110px minmax(0, 1fr);
+    grid-template-columns: 110px minmax(0, 1fr) minmax(0, 300px);
     gap: 48px;
-    padding: 22px 0;
+    align-items: start;
+    padding: 26px 0;
+}
+
+/* Image de chaque maison : même cadre doré que le triptyque */
+.frise__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 1px solid rgba(201, 164, 92, 0.45);
+    padding: 5px;
+    background: rgba(13, 11, 8, 0.6);
+    filter: sepia(0.18) saturate(0.9) brightness(0.88);
+    transition: filter var(--transition), transform var(--transition);
+}
+
+.frise__etape:hover .frise__image {
+    filter: none;
+    transform: translateY(-4px);
 }
 
 /* Losange doré posé sur le filet */
@@ -760,23 +780,6 @@
     color: var(--whisky-gold);
 }
 
-.triptyque__credits {
-    margin-top: 22px;
-    font-size: 0.85rem;
-    font-style: italic;
-    color: var(--whisky-muted);
-}
-
-.triptyque__credits a {
-    color: var(--whisky-muted);
-    text-decoration: underline;
-    text-decoration-color: rgba(201, 164, 92, 0.5);
-    text-underline-offset: 3px;
-}
-
-.triptyque__credits a:hover {
-    color: var(--whisky-gold);
-}
 
 .etapes {
     display: grid;
@@ -873,6 +876,19 @@
         grid-template-columns: minmax(0, 1fr);
     }
 
+    .frise__etape {
+        grid-template-columns: 90px minmax(0, 1fr) minmax(0, 220px);
+        gap: 32px;
+    }
+
+    .frise::before {
+        left: 90px;
+    }
+
+    .frise__etape::before {
+        left: 86px;
+    }
+
     .grille-produits {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -941,6 +957,10 @@
         grid-template-columns: minmax(0, 1fr);
         gap: 6px;
         padding-left: 30px;
+    }
+
+    .frise__image {
+        margin-top: 14px;
     }
 
     .frise__etape::before {

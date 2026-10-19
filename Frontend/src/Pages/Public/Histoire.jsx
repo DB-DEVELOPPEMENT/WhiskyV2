@@ -3,6 +3,48 @@ import { Link } from 'react-router-dom';
 import useSeo from '@/Hooks/useSeo';
 import PageHero from '@/Components/Page/PageHero';
 import SectionTitre from '@/Components/Page/SectionTitre';
+import Triptyque from '@/Components/Page/Triptyque';
+import imageEcosse from '@/Assets/Images/Histoire/voyage-ecosse.webp';
+import imageTaketsuru from '@/Assets/Images/Histoire/voyage-taketsuru.webp';
+import imageJapon from '@/Assets/Images/Histoire/voyage-japon.webp';
+import imageBowmore from '@/Assets/Images/Histoire/maison-bowmore.webp';
+import imageDalmore from '@/Assets/Images/Histoire/maison-dalmore.webp';
+import imageTogouchi from '@/Assets/Images/Histoire/maison-togouchi.webp';
+import imageYamazaki from '@/Assets/Images/Histoire/maison-yamazaki.webp';
+
+// ⚠ Crédits photos (à garder en mémoire, Wikimedia Commons sauf mention) :
+//   Écosse    : Neil Williamson, Glen Etive — CC BY-SA 2.0
+//               https://commons.wikimedia.org/wiki/File:Glen_Etive_-_Flickr_-_Neillwphoto.jpg
+//   Taketsuru : photographe inconnu — domaine public
+//               https://commons.wikimedia.org/wiki/File:Masataka_Taketsuru.jpg
+//   Japon     : Alpsdake, mont Fuji depuis le lac Kawaguchi — CC BY-SA 4.0
+//               https://commons.wikimedia.org/wiki/File:Autumn_leaf_color_and_Mount_Fuji_from_Lake_Kawaguchi.jpg
+//   Bowmore   : MSeses — CC BY-SA 4.0
+//               https://commons.wikimedia.org/wiki/File:Scotland_Argyll_Bute_Islay_Bowmore_Distillery_01.jpg
+//   Dalmore   : Wojsyl — CC BY-SA 3.0
+//               https://commons.wikimedia.org/wiki/File:Scotland_Alness_Dalmore_Distillery.jpg
+//   Togouchi  : tunnel-chai, site officiel togouchi.com (même image que le fond de l'accueil)
+//   Yamazaki  : Toukou Sousui — CC BY 2.0
+//               https://commons.wikimedia.org/wiki/File:Yamazaki_Distillery_山崎蒸留所17.jpg
+
+// Le voyage du whisky, en face du titre : Écosse → Taketsuru → Japon
+const VOYAGE = [
+  {
+    image: imageEcosse,
+    legende: 'Les Highlands',
+    alt: 'Route déserte traversant la vallée de Glen Etive, dans les Highlands écossais',
+  },
+  {
+    image: imageTaketsuru,
+    legende: 'Le voyage',
+    alt: 'Portrait ancien de Masataka Taketsuru, parti apprendre le whisky en Écosse',
+  },
+  {
+    image: imageJapon,
+    legende: 'Le Japon',
+    alt: 'Le mont Fuji enneigé derrière des érables rouges d’automne',
+  },
+];
 
 // Frise chronologique des quatre maisons de la collection
 const FRISE = [
@@ -10,24 +52,32 @@ const FRISE = [
     annee: 1779,
     titre: 'Bowmore',
     lieu: 'Écosse · Islay',
+    image: imageBowmore,
+    alt: 'Les bâtiments blancs de la distillerie Bowmore au bord du loch Indaal, sur Islay',
     texte: 'John Simson fonde la distillerie au bord du loch Indaal. Bowmore est l’une des plus anciennes distilleries d’Écosse, et ses No.1 Vaults comptent parmi les plus vieux chais du pays.',
   },
   {
     annee: 1839,
     titre: 'The Dalmore',
     lieu: 'Écosse · Highlands',
+    image: imageDalmore,
+    alt: 'Bâtiment en pierre de la distillerie The Dalmore, dans les Highlands',
     texte: 'Alexander Matheson crée la distillerie face à l’estuaire de Cromarty. La famille Mackenzie la reprend ensuite et lui transmet son emblème : le cerf royal.',
   },
   {
     annee: 1918,
     titre: 'Chugoku Jozo',
     lieu: 'Japon · Hiroshima',
+    image: imageTogouchi,
+    alt: 'Fûts de whisky Togouchi alignés dans l’ancien tunnel ferroviaire',
     texte: 'La maison naît à Hatsukaichi, sur la mer intérieure de Seto. Elle donnera plus tard naissance aux whiskies Togouchi, élevés dans un ancien tunnel ferroviaire.',
   },
   {
     annee: 1923,
     titre: 'Yamazaki',
     lieu: 'Japon · Kyoto',
+    image: imageYamazaki,
+    alt: 'Alambics en cuivre de la distillerie Yamazaki',
     texte: 'Shinjiro Torii fonde la première distillerie de malt du Japon, entre trois rivières, là où brumes et eaux pures se rencontrent.',
   },
 ];
@@ -40,10 +90,13 @@ const Histoire = () => {
 
   return (
     <div className="page">
-      <PageHero surtitre="Notre histoire" titre="L’eau de vie des Highlands au Japon">
-        Le whisky est né dans les monastères et les fermes d’Écosse, avant de traverser le monde
-        jusqu’aux vallées du Japon. Voici l’histoire des maisons qui composent notre collection.
-      </PageHero>
+      <div className="page-entete">
+        <PageHero surtitre="Notre histoire" titre="L’eau de vie des Highlands au Japon">
+          Le whisky est né dans les monastères et les fermes d’Écosse, avant de traverser le monde
+          jusqu’aux vallées du Japon. Voici l’histoire des maisons qui composent notre collection.
+        </PageHero>
+        <Triptyque etapes={VOYAGE} label="Le voyage du whisky, de l’Écosse au Japon" />
+      </div>
 
       {/* ----- Les origines ----- */}
       <section className="page-section page-colonnes">
@@ -86,6 +139,14 @@ const Histoire = () => {
                 <p className="frise__lieu">{etape.lieu}</p>
                 <p className="frise__texte">{etape.texte}</p>
               </div>
+              <img
+                className="frise__image"
+                src={etape.image}
+                alt={etape.alt}
+                width="640"
+                height="480"
+                loading="lazy"
+              />
             </li>
           ))}
         </ol>
