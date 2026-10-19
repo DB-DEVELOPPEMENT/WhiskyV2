@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import useTitre from '@/Hooks/useTitre';
+import useSeo from '@/Hooks/useSeo';
 import PageHero from '@/Components/Page/PageHero';
 import SectionTitre from '@/Components/Page/SectionTitre';
 
@@ -33,7 +33,10 @@ const FRISE = [
 ];
 
 const Histoire = () => {
-  useTitre('Notre histoire');
+  useSeo({
+    titre: 'Notre histoire',
+    description: 'L’histoire du whisky, des Highlands d’Écosse au Japon, et des quatre maisons de notre collection : Bowmore (1779), Dalmore (1839), Chugoku Jozo (1918) et Yamazaki (1923).',
+  });
 
   return (
     <div className="page">

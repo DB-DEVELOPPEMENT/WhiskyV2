@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import { whiskies, trouverWhisky } from '@/Data/whiskies';
 import { useSlider } from '@/Context/SliderContext';
-import useTitre from '@/Hooks/useTitre';
+import useSeo from '@/Hooks/useSeo';
 import SectionTitre from '@/Components/Page/SectionTitre';
 import Jauge from '@/Components/Produit/Jauge';
 import ProfilAromatique from '@/Components/Produit/ProfilAromatique';
@@ -14,7 +14,12 @@ const ProduitDetail = () => {
   const whisky = trouverWhisky(slug);
   const { setActiveSlide } = useSlider();
 
-  useTitre(whisky ? `${whisky.nom} ${whisky.edition}` : 'Whisky introuvable');
+  useSeo({
+    titre: whisky ? `${whisky.nom} ${whisky.edition}` : 'Whisky introuvable',
+    description: whisky
+      ? `${whisky.nom} ${whisky.edition}, ${whisky.type.toLowerCase()} (${whisky.degre}% vol). Nez : ${whisky.nez} Notes de dégustation, profil aromatique, fiche technique et accords.`
+      : undefined,
+  });
 
   // Le logo du header suit le whisky affiché
   const index = whiskies.indexOf(whisky);

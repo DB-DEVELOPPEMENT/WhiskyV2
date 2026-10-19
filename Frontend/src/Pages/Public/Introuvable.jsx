@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-import useTitre from '@/Hooks/useTitre';
+import useSeo from '@/Hooks/useSeo';
 import PageHero from '@/Components/Page/PageHero';
 
 // Page affichée pour une adresse inconnue
 const Introuvable = () => {
-  useTitre('Page introuvable');
+  useSeo({ titre: 'Page introuvable' });
 
   return (
     <div className="page page--centree">

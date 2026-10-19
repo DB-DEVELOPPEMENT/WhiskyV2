@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { whiskies } from '@/Data/whiskies';
-import useTitre from '@/Hooks/useTitre';
+import useSeo from '@/Hooks/useSeo';
 import PageHero from '@/Components/Page/PageHero';
 import CarteProduit from '@/Components/Produit/CarteProduit';
 
@@ -9,7 +9,10 @@ import CarteProduit from '@/Components/Produit/CarteProduit';
 const FILTRES = ['Tous', ...new Set(whiskies.map((whisky) => whisky.pays))];
 
 const Produits = () => {
-  useTitre('Nos produits');
+  useSeo({
+    titre: 'Nos produits',
+    description: 'La collection : Togouchi 9 ans, Yamazaki 25 ans, Dalmore King Alexander III et Bowmore 25 ans. Whiskies japonais et écossais d’exception, filtrables par pays.',
+  });
   const [filtre, setFiltre] = useState('Tous');
 
   const selection = filtre === 'Tous'

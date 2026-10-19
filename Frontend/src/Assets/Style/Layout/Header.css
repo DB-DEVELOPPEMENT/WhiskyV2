@@ -14,12 +14,81 @@
     align-items: center;
 }
 
-.header__1,
+/* Colonne gauche : accroche (ou retour accueil) au-dessus du menu */
+.header__1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.header__menu,
 .header__nav {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 22px;
+}
+
+/* Accroche de l'accueil : « Bienvenue » en italique doré, puis petites capitales */
+.header__accroche {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin: 0;
+}
+
+.header__accroche-bienvenue {
+    font-family: var(--font-texte);
+    font-size: 1.35rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--whisky-gold);
+}
+
+.header__accroche-texte {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-ui);
+    font-size: 0.62rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--whisky-text);
+}
+
+/* petit filet doré entre les deux parties */
+.header__accroche-texte::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--whisky-gold);
+}
+
+/* Retour accueil (pages intérieures), même emplacement que l'accroche */
+.header a.header__retour {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 4px;
+    color: var(--whisky-gold);
+    border-bottom: 1px solid rgba(201, 164, 92, 0.45);
+}
+
+.header__retour-fleche {
+    font-size: 0.9rem;
+    transition: transform var(--transition);
+}
+
+.header a.header__retour:hover {
+    color: var(--whisky-title);
+    border-bottom-color: var(--whisky-gold);
+}
+
+.header a.header__retour:hover .header__retour-fleche {
+    transform: translateX(-4px);
 }
 
 .header__nav {

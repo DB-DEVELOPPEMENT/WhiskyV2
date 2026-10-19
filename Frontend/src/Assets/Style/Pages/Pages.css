@@ -669,6 +669,115 @@
 }
 
 /*============== Nos procédures ==============*/
+/* En-tête : titre à gauche, triptyque d'images en face */
+.page-entete {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 56px;
+    align-items: center;
+    margin-bottom: 64px;
+}
+
+.page-entete .page-hero {
+    margin-bottom: 0;
+}
+
+.triptyque {
+    margin: 0;
+}
+
+.triptyque__images {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Décalage en escalier : le regard descend du champ jusqu'au verre */
+.triptyque__etape {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.triptyque__etape:nth-child(2) {
+    margin-top: 36px;
+}
+
+.triptyque__etape:nth-child(3) {
+    margin-top: 72px;
+}
+
+/* Petite flèche dorée entre deux étapes */
+.triptyque__etape:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 42%;
+    right: -18px;
+    z-index: 1;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: var(--whisky-gold);
+}
+
+.triptyque__etape img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 1px solid rgba(201, 164, 92, 0.45);
+    padding: 5px;
+    background: rgba(13, 11, 8, 0.6);
+    /* teinte chaude et légèrement assombrie, accordée au fond noir et or */
+    filter: sepia(0.18) saturate(0.9) brightness(0.88);
+    transition: filter var(--transition), transform var(--transition);
+}
+
+.triptyque__etape:hover img {
+    filter: none;
+    transform: translateY(-4px);
+}
+
+.triptyque__legende {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--font-ui);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--whisky-text);
+}
+
+.triptyque__numero {
+    font-family: var(--font-titre);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--whisky-gold);
+}
+
+.triptyque__credits {
+    margin-top: 22px;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--whisky-muted);
+}
+
+.triptyque__credits a {
+    color: var(--whisky-muted);
+    text-decoration: underline;
+    text-decoration-color: rgba(201, 164, 92, 0.5);
+    text-underline-offset: 3px;
+}
+
+.triptyque__credits a:hover {
+    color: var(--whisky-gold);
+}
+
 .etapes {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -760,6 +869,10 @@
 
 /*============== Responsive ==============*/
 @media (max-width: 1100px) {
+    .page-entete {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .grille-produits {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -777,6 +890,28 @@
 
     .page-hero {
         margin-bottom: 40px;
+    }
+
+    .page-entete {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+        margin-bottom: 40px;
+    }
+
+    .triptyque__images {
+        gap: 12px;
+    }
+
+    .triptyque__etape:nth-child(2) {
+        margin-top: 18px;
+    }
+
+    .triptyque__etape:nth-child(3) {
+        margin-top: 36px;
+    }
+
+    .triptyque__etape:not(:last-child)::after {
+        display: none;
     }
 
     .grille-produits,

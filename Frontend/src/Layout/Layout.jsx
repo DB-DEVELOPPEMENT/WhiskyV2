@@ -10,7 +10,7 @@
 //     return (
 //         <SliderProvider>
 //             <div className='layout'>
-//                 <Header />
+//                 <Header accueil={estPageAccueil} />
 //                 <main>
 //                     <Outlet />
 //                 </main>
@@ -48,7 +48,7 @@ function LayoutContent() {
   return (
     <div className={estPageAccueil ? "layout layout--accueil" : "layout"}>
       {estPageAccueil && <Fond activeSlide={activeSlide} />}
-      <Header />
+      <Header accueil={estPageAccueil} />
       <main className="layout__main">
         <Outlet />
       </main>

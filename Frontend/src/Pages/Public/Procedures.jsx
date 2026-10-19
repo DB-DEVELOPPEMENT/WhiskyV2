@@ -1,8 +1,37 @@
 import { Link } from 'react-router-dom';
 
-import useTitre from '@/Hooks/useTitre';
+import useSeo from '@/Hooks/useSeo';
 import PageHero from '@/Components/Page/PageHero';
 import SectionTitre from '@/Components/Page/SectionTitre';
+import imageRecolte from '@/Assets/Images/Procedes/recolte-orge.webp';
+import imageDistillerie from '@/Assets/Images/Procedes/distillerie-alambics.webp';
+import imageDegustation from '@/Assets/Images/Procedes/degustation-verre.webp';
+
+// Triptyque « De l'orge au verre » : champ d'orge → distillerie → verre de dégustation.
+// Photos Wikimedia Commons, licence CC BY-SA 4.0 (auteurs cités sous les images).
+const TRIPTYQUE = [
+  {
+    image: imageRecolte,
+    legende: 'La récolte',
+    alt: 'Épis d’orge dorés dans un champ, sous un ciel bleu',
+    auteur: 'Mhmd.abdrzg',
+    source: 'https://commons.wikimedia.org/wiki/File:Golden_Barley_feild.jpg',
+  },
+  {
+    image: imageDistillerie,
+    legende: 'La distillerie',
+    alt: 'Alambics en cuivre de la distillerie Nikka Yoichi, au Japon',
+    auteur: 'さかおり',
+    source: 'https://commons.wikimedia.org/wiki/File:Nikka_Whisky_Yoichi_Distillery._Still_House._Pot_Still._A.jpg',
+  },
+  {
+    image: imageDegustation,
+    legende: 'La dégustation',
+    alt: 'Verre de dégustation tulipe rempli de whisky ambré, posé sur un comptoir',
+    auteur: 'Amiko82',
+    source: 'https://commons.wikimedia.org/wiki/File:Glencairn_Whisky_Glass...jpg',
+  },
+];
 
 // Les étapes de fabrication, de l'orge au verre
 const ETAPES = [
@@ -53,14 +82,50 @@ const DEGUSTATION = [
 ];
 
 const Procedures = () => {
-  useTitre('Nos procédures');
+  useSeo({
+    titre: 'Nos procédures',
+    description: 'De l’orge au verre : maltage, brassage, fermentation, distillation en alambic de cuivre, vieillissement en fût de chêne et assemblage. Et l’art de déguster un whisky.',
+  });
 
   return (
     <div className="page">
-      <PageHero surtitre="Nos procédures" titre="De l’orge au verre">
-        Trois ingrédients seulement : de l’orge, de l’eau et des levures. Le reste est une affaire
-        de patience, de cuivre, de chêne et de savoir-faire.
-      </PageHero>
+      <div className="page-entete">
+        <PageHero surtitre="Nos procédures" titre="De l’orge au verre">
+          Trois ingrédients seulement : de l’orge, de l’eau et des levures. Le reste est une affaire
+          de patience, de cuivre, de chêne et de savoir-faire.
+        </PageHero>
+
+        <figure className="triptyque">
+          <ol className="triptyque__images">
+            {TRIPTYQUE.map((etape, index) => (
+              <li key={etape.legende} className="triptyque__etape">
+                <img
+                  src={etape.image}
+                  alt={etape.alt}
+                  width="600"
+                  height="800"
+                  fetchPriority={index === 0 ? 'high' : 'auto'}
+                />
+                <span className="triptyque__legende">
+                  <span className="triptyque__numero" aria-hidden="true">{['I', 'II', 'III'][index]}</span>
+                  {etape.legende}
+                </span>
+              </li>
+            ))}
+          </ol>
+          <figcaption className="triptyque__credits">
+            Photos :{' '}
+            {TRIPTYQUE.map((etape, index) => (
+              <span key={etape.auteur}>
+                {index > 0 && ', '}
+                <a href={etape.source} target="_blank" rel="noopener noreferrer">{etape.auteur}</a>
+              </span>
+            ))}
+            {' '}· Wikimedia Commons,{' '}
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
+          </figcaption>
+        </figure>
+      </div>
 
       {/* ----- Étapes de fabrication ----- */}
       <section className="page-section" aria-labelledby="fabrication">
