@@ -1,8 +1,12 @@
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useSlider } from '@/Context/SliderContext';
 
 import { whiskies } from '@/Data/whiskies';
+import LogoMaison from './LogoMaison';
+
+// Pages qui affichent le logo générique de la maison au lieu du logo de la bouteille
+const PAGES_MAISON = ['/histoire', '/process', '/credits'];
 const SOCIAL = ["Facebook", "Instagram", "Twitter"];
 
 
@@ -11,6 +15,8 @@ const Header = ({ accueil = false }) => {
 
     const { activeSlide } = useSlider();
     const whisky = whiskies[activeSlide];
+    const { pathname } = useLocation();
+    const logoMaison = PAGES_MAISON.includes(pathname.replace(/\/+$/, ''));
 
     return (
         <header className="header">
@@ -47,11 +53,15 @@ const Header = ({ accueil = false }) => {
                     </nav>
                 </div>
                 <div className="header__2">
-                    <img
-                        className={whisky.logoDetoure ? "header__logo header__logo--detoure" : "header__logo"}
-                        src={whisky.logo}
-                        alt={`Logo ${whisky.nom}`}
-                    />
+                    {logoMaison ? (
+                        <LogoMaison />
+                    ) : (
+                        <img
+                            className={whisky.logoDetoure ? "header__logo header__logo--detoure" : "header__logo"}
+                            src={whisky.logo}
+                            alt={`Logo ${whisky.nom}`}
+                        />
+                    )}
                 </div>
                 <div className="header__3">
                    <nav className="header__nav">

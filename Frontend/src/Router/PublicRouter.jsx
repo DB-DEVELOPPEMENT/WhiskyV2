@@ -6,6 +6,7 @@ import Produits from '@/Pages/Public/Produits';
 import ProduitDetail from '@/Pages/Public/ProduitDetail';
 import Histoire from '@/Pages/Public/Histoire';
 import Procedures from '@/Pages/Public/Procedures';
+import Credits from '@/Pages/Public/Credits';
 import Introuvable from '@/Pages/Public/Introuvable';
 
 const PublicRouter = () => {
@@ -21,6 +22,8 @@ const PublicRouter = () => {
                 <Route path="/produits/:slug" element={<ProduitDetail />} />
                 <Route path="/histoire" element={<Histoire />} />
                 <Route path="/process" element={<Procedures />} />
+                {/* Page légale : accessible seulement par les liens « Crédits » */}
+                <Route path="/credits" element={<Credits />} />
                 {/* Toute autre adresse : page 404 */}
                 <Route path="*" element={<Introuvable />} />
             </Route>

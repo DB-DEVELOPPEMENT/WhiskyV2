@@ -3,13 +3,19 @@
 // des cases directes de la grille du slider.
 // À droite : un bouton qui fait défiler vers le coffret suivant,
 // et le crédit de l'auteur en bas de la colonne.
+import { Link } from 'react-router-dom';
+
 import { AUTEUR, PORTFOLIO_URL } from '@/Data/site';
 
 export default function SliderRails({ suivant, onNext }) {
   return (
     <>
-      <div className="whisky-rail whisky-rail--left" aria-hidden="true">
-        <span className="whisky-rail__text">Nos dégustations</span>
+      {/* Gauche : texte décoratif, et le lien « Crédits » en bas de la colonne */}
+      <div className="whisky-rail whisky-rail--left">
+        <span className="whisky-rail__text whisky-rail__deco" aria-hidden="true">Nos dégustations</span>
+        <Link className="whisky-rail__credits" to="/credits">
+          <span className="whisky-rail__text">Crédits</span>
+        </Link>
       </div>
       <div className="whisky-rail whisky-rail--right">
         <button

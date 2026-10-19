@@ -24,8 +24,8 @@ import imageYamazaki from '@/Assets/Images/Histoire/maison-yamazaki.webp';
 //   Dalmore   : Wojsyl — CC BY-SA 3.0
 //               https://commons.wikimedia.org/wiki/File:Scotland_Alness_Dalmore_Distillery.jpg
 //   Togouchi  : tunnel-chai, site officiel togouchi.com (même image que le fond de l'accueil)
-//   Yamazaki  : Toukou Sousui — CC BY 2.0
-//               https://commons.wikimedia.org/wiki/File:Yamazaki_Distillery_山崎蒸留所17.jpg
+//   Yamazaki  : Oilstreet, cerisiers en fleurs à Ōyamazaki — CC BY 2.5
+//               https://commons.wikimedia.org/wiki/File:Oyamazaki_Kyoto01-r.jpg
 
 // Le voyage du whisky, en face du titre : Écosse → Taketsuru → Japon
 const VOYAGE = [
@@ -77,7 +77,7 @@ const FRISE = [
     titre: 'Yamazaki',
     lieu: 'Japon · Kyoto',
     image: imageYamazaki,
-    alt: 'Alambics en cuivre de la distillerie Yamazaki',
+    alt: 'Cerisiers en fleurs surplombant les rivières d’Ōyamazaki, ville de la distillerie Yamazaki',
     texte: 'Shinjiro Torii fonde la première distillerie de malt du Japon, entre trois rivières, là où brumes et eaux pures se rencontrent.',
   },
 ];

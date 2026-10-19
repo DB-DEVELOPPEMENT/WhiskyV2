@@ -325,8 +325,36 @@
     justify-content: center;
 }
 
+/* Colonne gauche : texte centré, lien « Crédits » en bas */
 .whisky-rail--left {
     left: 0;
+    flex-direction: column;
+}
+
+.whisky-rail--left .whisky-rail__deco {
+    margin-block: auto;
+}
+
+.whisky-rail__credits {
+    position: absolute;
+    bottom: clamp(14px, 3vh, 28px);
+    text-decoration: none;
+}
+
+/* Teinte dorée légère : visible sans attirer l'œil */
+.whisky-rail__credits .whisky-rail__text {
+    font-size: 0.56rem;
+    color: rgba(201, 164, 92, 0.75);
+    transition: color var(--transition);
+}
+
+.whisky-rail__credits:hover .whisky-rail__text {
+    color: var(--whisky-gold);
+}
+
+.whisky-rail__credits:focus-visible {
+    outline: 2px solid var(--whisky-gold);
+    outline-offset: 4px;
 }
 
 /* Colonne droite : bouton centré dans l'espace libre, crédit en bas */
@@ -391,7 +419,7 @@
 }
 
 /* petit trait doré avant le texte de gauche */
-.whisky-rail--left .whisky-rail__text::before {
+.whisky-rail--left .whisky-rail__deco::before {
     content: "";
     display: inline-block;
     width: 1px;

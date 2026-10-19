@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { AUTEUR, PORTFOLIO_URL } from '@/Data/site';
 
 // Footer des pages intérieures.
@@ -25,6 +27,8 @@ const Footer = ({ accueil = false }) => {
                 >
                     {AUTEUR}
                 </a>
+                {' · '}
+                <Link className="footer__credits" to="/credits">Crédits &amp; mentions légales</Link>
             </p>
         </footer>
     );

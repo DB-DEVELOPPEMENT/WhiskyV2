@@ -46,6 +46,26 @@
     outline-offset: 4px;
 }
 
+/* Lien vers la page Crédits : écrit légèrement, teinte dorée discrète */
+.footer__credits {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    color: rgba(201, 164, 92, 0.75);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.footer__credits:hover {
+    color: var(--whisky-gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.footer__credits:focus-visible {
+    outline: 2px solid var(--whisky-gold);
+    outline-offset: 4px;
+}
+
 /* Accueil : masqué sur grand écran (le crédit est dans la colonne de droite) */
 .footer--accueil {
     display: none;
