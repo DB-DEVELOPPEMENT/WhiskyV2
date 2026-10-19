@@ -155,12 +155,20 @@
     filter: none;
 }
 
+/* Mention légale (loi Évin) sous la bouteille : discrète mais lisible */
 .whisky-product__caption {
+    width: max-content; /* largeur naturelle du texte… */
+    max-width: min(520px, 100%); /* …plafonnée : 2 lignes sur grand écran */
     font-family: var(--font-ui);
     font-size: 0.62rem;
     letter-spacing: 0.2em;
+    line-height: 1.7;
+    text-align: center;
     text-transform: uppercase;
-    color: var(--whisky-muted);
+    color: var(--whisky-text);
+    opacity: 0.8;
+    /* ombre sombre : reste lisible sur la brume des nuages */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.8);
 }
 
 /*---------- Sélection : flèches + vignettes ----------*/
@@ -384,6 +392,66 @@
     height: 32px;
     margin-bottom: 14px;
     background: var(--whisky-gold);
+}
+
+/* Rail droit : tout le bloc est un bouton « coffret suivant » */
+.whisky-rail__suivant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+/* Pastille dorée avec flèche, comme les boutons ← → du slider */
+.whisky-rail__icone {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    color: var(--whisky-gold);
+    border: 1px solid var(--whisky-gold);
+    border-radius: 50%;
+    background: rgba(13, 11, 8, 0.6);
+    transition: background-color var(--transition), color var(--transition);
+}
+
+/* La flèche avance doucement vers la droite : « suivez-moi » */
+.whisky-rail__icone svg {
+    animation: rail-suivant 2.4s ease-in-out infinite;
+}
+
+@keyframes rail-suivant {
+    0%, 60%, 100% { transform: translateX(0); }
+    30% { transform: translateX(3px); }
+}
+
+.whisky-rail__suivant:hover .whisky-rail__icone {
+    background: var(--whisky-gold);
+    color: var(--whisky-noir);
+}
+
+.whisky-rail__suivant .whisky-rail__text {
+    transition: color var(--transition);
+}
+
+.whisky-rail__suivant:hover .whisky-rail__text,
+.whisky-rail__suivant:hover .whisky-rail__text strong {
+    color: var(--whisky-gold);
+}
+
+.whisky-rail__suivant:focus-visible {
+    outline: 2px solid var(--whisky-gold);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .whisky-rail__icone svg {
+        animation: none;
+    }
 }
 
 .whisky-rail__text strong {

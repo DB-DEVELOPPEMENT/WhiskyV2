@@ -53,7 +53,10 @@ export default function Slider() {
           />
         </div>
 
-        <SliderRails whisky={whisky} />
+        <SliderRails
+          suivant={whiskies[(activeSlide + 1) % whiskies.length]}
+          onNext={afficherSuivant}
+        />
         <SliderFooter whisky={whisky} />
 
         <p className="whisky-sr-only" role="status">

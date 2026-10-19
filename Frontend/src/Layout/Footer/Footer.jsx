@@ -9,10 +9,13 @@ const Footer = ({ fixe = false }) => {
 
     return (
         <footer className={fixe ? "footer footer--fixe" : "footer"}>
-            {/* Mention obligatoire en France pour un site sur l'alcool (loi Évin) */}
-            <p className="footer__mention">
-                L'abus d'alcool est dangereux pour la santé, à consommer avec modération.
-            </p>
+            {/* Mention obligatoire en France pour un site sur l'alcool (loi Évin).
+                Sur l'accueil, elle est affichée sous la bouteille du slider. */}
+            {!fixe && (
+                <p className="footer__mention">
+                    L'abus d'alcool est dangereux pour la santé, à consommer avec modération.
+                </p>
+            )}
             <p className="footer__credit">
                 © {annee} · Conçu et développé par{' '}
                 <a
@@ -21,7 +24,7 @@ const Footer = ({ fixe = false }) => {
                     target="_blank"
                     rel="author noopener noreferrer"
                 >
-                    Durrieu Benjamin
+                    DB-Développement
                 </a>
             </p>
         </footer>

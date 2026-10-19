@@ -19,7 +19,10 @@ export default function SlideBottle({ whisky, onNext }) {
           />
         </span>
       </button>
-      <p className="whisky-product__caption">Cliquer sur le coffret pour continuer</p>
+      {/* Mention obligatoire en France pour un site sur l'alcool (loi Évin) */}
+      <p className="whisky-product__caption">
+        L'abus d'alcool est dangereux pour la santé, à consommer avec modération.
+      </p>
     </div>
   );
 }

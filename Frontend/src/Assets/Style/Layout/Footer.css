@@ -55,6 +55,7 @@
     bottom: 0;
     z-index: 3;
     max-width: none;
+    justify-content: flex-end; /* seul le crédit reste : la mention est sous la bouteille */
     padding: 22px max(var(--page-gutter), calc((100% - var(--page-max)) / 2 + var(--page-gutter))) 10px;
     background: linear-gradient(to top, rgba(13, 11, 8, 0.92) 40%, transparent);
 }
