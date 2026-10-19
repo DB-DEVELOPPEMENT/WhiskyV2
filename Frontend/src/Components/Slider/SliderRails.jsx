@@ -1,7 +1,10 @@
 // Textes verticaux de chaque côté du slider (décor de la maquette).
 // Un fragment <> permet de renvoyer deux éléments qui restent
 // des cases directes de la grille du slider.
-// À droite : un bouton qui fait défiler vers le coffret suivant.
+// À droite : un bouton qui fait défiler vers le coffret suivant,
+// et le crédit de l'auteur en bas de la colonne.
+import { AUTEUR, PORTFOLIO_URL } from '@/Data/site';
+
 export default function SliderRails({ suivant, onNext }) {
   return (
     <>
@@ -25,6 +28,17 @@ export default function SliderRails({ suivant, onNext }) {
             Coffret suivant <strong>{suivant.nom}</strong>
           </span>
         </button>
+
+        <a
+          className="whisky-rail__credit"
+          href={PORTFOLIO_URL}
+          target="_blank"
+          rel="author noopener noreferrer"
+        >
+          <span className="whisky-rail__text">
+            © {new Date().getFullYear()} · <strong>{AUTEUR}</strong>
+          </span>
+        </a>
       </div>
     </>
   );

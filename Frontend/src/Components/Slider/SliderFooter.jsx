@@ -8,6 +8,12 @@ export default function SliderFooter({ whisky }) {
         <span className="whisky-corner__title">Depuis {whisky.fondation}</span>
         <span className="whisky-corner__link">Notre histoire</span>
       </Link>
+      {/* Finition du bas de page : filets dorés et losange, au centre */}
+      <span className="whisky-ornement" aria-hidden="true">
+        <span className="whisky-ornement__filet" />
+        <span className="whisky-ornement__losange" />
+        <span className="whisky-ornement__filet" />
+      </span>
       <Link to="/process" className="whisky-corner whisky-corner--right">
         <span className="whisky-corner__title">La distillerie</span>
         <span className="whisky-corner__link">Visiter</span>

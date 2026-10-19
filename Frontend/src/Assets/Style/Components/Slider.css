@@ -329,8 +329,14 @@
     left: 0;
 }
 
+/* Colonne droite : bouton centré dans l'espace libre, crédit en bas */
 .whisky-rail--right {
     right: 0;
+    flex-direction: column;
+}
+
+.whisky-rail--right .whisky-rail__suivant {
+    margin-block: auto;
 }
 
 /* Colonne de chaque rail, sur toute la hauteur :
@@ -392,6 +398,33 @@
     height: 32px;
     margin-bottom: 14px;
     background: var(--whisky-gold);
+}
+
+/* Crédit de l'auteur, en bas de la colonne de droite */
+.whisky-rail__credit {
+    flex-shrink: 0;
+    margin-bottom: clamp(14px, 3vh, 28px);
+    text-decoration: none;
+}
+
+.whisky-rail__credit .whisky-rail__text {
+    font-size: 0.56rem;
+    transition: color var(--transition);
+}
+
+.whisky-rail__credit .whisky-rail__text strong {
+    font-size: 0.8rem;
+    color: var(--whisky-gold);
+}
+
+.whisky-rail__credit:hover .whisky-rail__text,
+.whisky-rail__credit:hover .whisky-rail__text strong {
+    color: var(--whisky-title);
+}
+
+.whisky-rail__credit:focus-visible {
+    outline: 2px solid var(--whisky-gold);
+    outline-offset: 4px;
 }
 
 /* Rail droit : tout le bloc est un bouton « coffret suivant » */
@@ -474,6 +507,35 @@
     border-top: 2px dotted rgba(201, 164, 92, 0.6);
 }
 
+/* Finition du bas de page : ——◆—— doré au centre */
+.whisky-ornement {
+    flex: 1;
+    max-width: 320px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    align-self: center;
+}
+
+.whisky-ornement__filet {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201, 164, 92, 0.75));
+}
+
+.whisky-ornement__filet:last-child {
+    background: linear-gradient(to left, transparent, rgba(201, 164, 92, 0.75));
+}
+
+.whisky-ornement__losange {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border: 1px solid var(--whisky-gold);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px var(--whisky-gold-glow);
+}
+
 .whisky-corner {
     display: flex;
     flex-direction: column;
@@ -547,5 +609,101 @@
     .whisky-thumbs li {
         flex-shrink: 0;
         scroll-snap-align: start;
+    }
+}
+
+/*---------- Accueil sur un seul écran (ordinateur) ----------*/
+/* Les espacements et tailles suivent la hauteur de l'écran (vh) :
+   tout l'accueil tient dans la fenêtre, sans avoir à faire défiler. */
+@media (min-width: 901px) {
+    .layout--accueil {
+        height: 100vh;  /* navigateurs anciens */
+        height: 100dvh;
+        min-height: 560px; /* en dessous, la page défile normalement */
+    }
+
+    .layout--accueil .layout__main {
+        min-height: 0;
+    }
+
+    .layout--accueil .header__section {
+        padding-top: clamp(14px, 3vh, 28px);
+        padding-bottom: clamp(4px, 1vh, 12px);
+    }
+
+    .layout--accueil .header__2 img {
+        height: clamp(46px, 7.5vh, 72px);
+    }
+
+    .whisky-slider {
+        min-height: 0;
+        padding-bottom: clamp(12px, 3vh, 32px);
+    }
+
+    .whisky-slider__inner {
+        min-height: 0;
+    }
+
+    .whisky-info__eyebrow {
+        margin-bottom: clamp(8px, 1.8vh, 18px);
+    }
+
+    .whisky-info__title {
+        font-size: clamp(2.4rem, min(6vw, 9.5vh), 5.5rem);
+    }
+
+    .whisky-info__line {
+        margin: clamp(12px, 2.6vh, 26px) 0;
+    }
+
+    .whisky-info__description {
+        font-size: clamp(0.95rem, 2vh, 1.1rem);
+    }
+
+    .whisky-info__lien {
+        margin-top: clamp(10px, 2.4vh, 24px);
+    }
+
+    .whisky-product__image {
+        max-height: min(56vh, 620px);
+    }
+
+    .whisky-slider__controls {
+        margin-bottom: clamp(8px, 2vh, 22px);
+    }
+
+    .whisky-thumbs {
+        padding-bottom: clamp(8px, 1.8vh, 18px);
+    }
+
+    .whisky-thumb__picture {
+        height: clamp(40px, 7vh, 66px);
+    }
+
+    .whisky-slider__footer {
+        padding-top: clamp(10px, 2vh, 20px);
+    }
+}
+
+/* Écrans d'ordinateur peu hauts (petits portables) : on resserre encore un peu */
+@media (min-width: 901px) and (max-height: 680px) {
+    .whisky-info__title {
+        font-size: clamp(2.2rem, min(6vw, 8.5vh), 5.5rem);
+    }
+
+    .whisky-info__edition {
+        margin-top: 4px;
+    }
+
+    .whisky-info__description {
+        line-height: 1.45;
+    }
+
+    .whisky-thumb__picture {
+        height: clamp(36px, 6vh, 66px);
+    }
+
+    .whisky-thumb__edition {
+        font-size: 0.72rem;
     }
 }

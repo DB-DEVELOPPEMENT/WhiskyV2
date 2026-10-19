@@ -14,7 +14,7 @@
 //                 <main>
 //                     <Outlet />
 //                 </main>
-//                 <Footer fixe={estPageAccueil} />
+//                 <Footer accueil={estPageAccueil} />
 //             </div>
 //         </SliderProvider>
 
@@ -46,13 +46,13 @@ function LayoutContent() {
   const estPageAccueil = chemin === '' || chemin === '/accueil';
 
   return (
-    <div className="layout">
+    <div className={estPageAccueil ? "layout layout--accueil" : "layout"}>
       {estPageAccueil && <Fond activeSlide={activeSlide} />}
       <Header />
       <main className="layout__main">
         <Outlet />
       </main>
-      <Footer fixe={estPageAccueil} />
+      <Footer accueil={estPageAccueil} />
     </div>
   );
 }

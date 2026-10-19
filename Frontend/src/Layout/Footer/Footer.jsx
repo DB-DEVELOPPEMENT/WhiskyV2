@@ -1,17 +1,16 @@
-// Lien vers le portfolio : à remplacer par l'adresse du futur portfolio.
-// En attendant, il pointe vers le profil GitHub.
-const PORTFOLIO_URL = 'https://github.com/DB-DEVELOPPEMENT';
+import { AUTEUR, PORTFOLIO_URL } from '@/Data/site';
 
-// fixe = true sur l'accueil : le footer reste collé en bas de l'écran,
-// pour que le crédit soit visible même sur un petit écran sans faire défiler.
-const Footer = ({ fixe = false }) => {
+// Footer des pages intérieures.
+// accueil = true : sur grand écran il est masqué (la mention est sous la bouteille,
+// le crédit dans la colonne de droite) ; sur mobile, où les colonnes disparaissent,
+// il affiche seulement le crédit.
+const Footer = ({ accueil = false }) => {
     const annee = new Date().getFullYear();
 
     return (
-        <footer className={fixe ? "footer footer--fixe" : "footer"}>
-            {/* Mention obligatoire en France pour un site sur l'alcool (loi Évin).
-                Sur l'accueil, elle est affichée sous la bouteille du slider. */}
-            {!fixe && (
+        <footer className={accueil ? "footer footer--accueil" : "footer"}>
+            {/* Mention obligatoire en France pour un site sur l'alcool (loi Évin) */}
+            {!accueil && (
                 <p className="footer__mention">
                     L'abus d'alcool est dangereux pour la santé, à consommer avec modération.
                 </p>
@@ -24,7 +23,7 @@ const Footer = ({ fixe = false }) => {
                     target="_blank"
                     rel="author noopener noreferrer"
                 >
-                    DB-Développement
+                    {AUTEUR}
                 </a>
             </p>
         </footer>
