@@ -598,7 +598,8 @@
 /*---------- Tablette et mobile ----------*/
 @media (max-width: 900px) {
     .whisky-slider__inner {
-        grid-template-columns: 1fr;
+        /* minmax(0, …) : sinon la colonne s'élargit au contenu le plus large et déborde de l'écran */
+        grid-template-columns: minmax(0, 1fr);
         grid-template-rows: auto;
         grid-template-areas:
             "info"

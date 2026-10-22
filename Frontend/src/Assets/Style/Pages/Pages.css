@@ -994,6 +994,14 @@
         display: none;
     }
 
+    /* colonnes très étroites : la légende passe à la ligne au lieu de déborder */
+    .triptyque__legende {
+        flex-wrap: wrap;
+        gap: 2px 8px;
+        letter-spacing: 0.12em;
+        overflow-wrap: anywhere;
+    }
+
     .grille-produits,
     .etapes,
     .degustation,
