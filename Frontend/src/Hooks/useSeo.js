@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const NOM_DU_SITE = "Whiskies d'exception";
-const URL_DU_SITE = 'https://db-developpement.github.io/WhiskyV2';
+const URL_DU_SITE = 'https://whisky.db-dev.fr';
 
 // Crée la balise <meta> ou <link> si elle n'existe pas encore, puis la renvoie
 function balise(selecteur, creer) {

@@ -2,35 +2,35 @@
 <!-- Liste des pages du site. Ajouter une <url> par nouvelle page. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://db-developpement.github.io/WhiskyV2/</loc>
+    <loc>https://whisky.db-dev.fr/</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
   <url>
-    <loc>https://db-developpement.github.io/WhiskyV2/produits</loc>
+    <loc>https://whisky.db-dev.fr/produits</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
   <url>
-    <loc>https://db-developpement.github.io/WhiskyV2/produits/togouchi-9-ans</loc>
+    <loc>https://whisky.db-dev.fr/produits/togouchi-9-ans</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
   <url>
-    <loc>https://db-developpement.github.io/WhiskyV2/produits/yamazaki-25-ans</loc>
+    <loc>https://whisky.db-dev.fr/produits/yamazaki-25-ans</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
   <url>
-    <loc>https://db-developpement.github.io/WhiskyV2/produits/dalmore-king-alexander-iii</loc>
+    <loc>https://whisky.db-dev.fr/produits/dalmore-king-alexander-iii</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
   <url>
-    <loc>https://db-developpement.github.io/WhiskyV2/produits/bowmore-25-ans</loc>
+    <loc>https://whisky.db-dev.fr/produits/bowmore-25-ans</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
   <url>
-    <loc>https://db-developpement.github.io/WhiskyV2/histoire</loc>
+    <loc>https://whisky.db-dev.fr/histoire</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
   <url>
-    <loc>https://db-developpement.github.io/WhiskyV2/process</loc>
+    <loc>https://whisky.db-dev.fr/process</loc>
     <lastmod>2026-10-12</lastmod>
   </url>
 </urlset>

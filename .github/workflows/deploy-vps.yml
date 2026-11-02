@@ -1,0 +1,32 @@
+# Met à jour https://whisky.db-dev.fr à chaque push sur main (en plus de GitHub Pages).
+# Le VPS reconstruit le conteneur depuis GitHub. Le secret VPS_DEPLOY_KEY est une clé SSH
+# qui ne peut lancer QUE ce redéploiement (commande forcée côté serveur).
+name: Déploiement VPS
+
+on:
+  push:
+    branches: [main]
+    paths: ['Frontend/**', '.github/workflows/deploy-vps.yml']
+  workflow_dispatch: # bouton "Run workflow" dans l'onglet Actions
+
+permissions: {}
+
+concurrency:
+  group: vps
+  cancel-in-progress: false # on laisse finir un déploiement en cours
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: vps
+      url: https://whisky.db-dev.fr
+    steps:
+      - name: Redéployer sur le VPS
+        env:
+          KEY: ${{ secrets.VPS_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
+          echo "217.154.178.187 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiduFWiRehUpkmnRWh7dLlmLCN6DnELLmiR7aH5evdT" > ~/.ssh/known_hosts
+          ssh -o BatchMode=yes deploy@217.154.178.187
